@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">StarsAndNebulae</string>
+
+    <string name="dummy_button">Explore</string>
+    <string name="dummy_content">Stars \nAnd \nNebulae</string>
+</resources>
