@@ -9,6 +9,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import droidbottle.com.starsandnebulae.MainGridActivity;
 import droidbottle.com.starsandnebulae.R;
 
 /**
@@ -39,22 +40,23 @@ public class ImageAdapter extends BaseAdapter{
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        View grid;
+        View gridView;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            grid = new View(mContext);
-            grid = inflater.inflate(R.layout.grid_single, null);
-            TextView textView = (TextView) grid.findViewById(R.id.grid_text);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-
+            gridView = new View(mContext);
+            gridView = inflater.inflate(R.layout.grid_single, null);
+           // gridView.setMinimumHeight(MainGridActivity.height/4);
+            TextView textView = (TextView) gridView.findViewById(R.id.grid_text);
+            ImageView imageView = (ImageView)gridView.findViewById(R.id.grid_image);
+            gridView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             textView.setText(web[position]);
             imageView.setImageResource(Imageid[position]);
         } else {
-            grid = (View) convertView;
+            gridView = (View) convertView;
         }
 
-        return grid;
+        return gridView;
     }
 }

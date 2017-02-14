@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +20,10 @@ public class MainGridActivity extends Activity {
     private static final int UI_ANIMATION_DELAY = 300;
     private final Handler mHideHandler = new Handler();
     private View mContentView;
+
+    //
+    public static int width;
+    public static int height;
 
     private final Runnable mHidePart2Runnable = new Runnable() {
         @SuppressLint("InlinedApi")
@@ -83,6 +88,14 @@ public class MainGridActivity extends Activity {
         setContentView(R.layout.activity_main_grid);
         mVisible = true;
         mContentView = findViewById(R.id.gridview);
+
+        //
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+         width = metrics.widthPixels;
+         height = metrics.heightPixels;
+        //
 
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this, web,imageId));
